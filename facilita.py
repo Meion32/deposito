@@ -4,6 +4,14 @@ C3 = float(input("Qual a corrente 3\n").strip())
 c1 = C1 / 1000
 c2 = C2 / 1000
 c3 = C3 / 1000
+def Tensão(Resistor):
+        global t1, t2, t3, tf12, tf13, tf23
+        t1 = Resistor * c1
+        t2 = Resistor * c2
+        t3 = Resistor * c3
+        tf12 = Resistor * front12
+        tf13 = Resistor * front13
+        tf23 = Resistor * front23
 def cal_front(nome,A,B):
     while True:
         resposta = input (f"A {nome} esta invertida?(sim/não)\n").strip().lower()
@@ -24,12 +32,7 @@ while True:
     if conta == "tensão".lower():
         while True:
             Resistor = int(input("Qual o resistor para conta\n").strip())
-            t1 = Resistor * c1
-            t2 = Resistor * c2
-            t3 = Resistor * c3
-            tf12 = Resistor * front12
-            tf13 = Resistor * front13
-            tf23 = Resistor * front23
+            Tensão(Resistor)
             cal = input("Qual camada você quer achar a tensão?\n").strip().lower()
             
             if cal == "I1".lower():
@@ -60,12 +63,7 @@ while True:
         
         while True:
             Resistor = int(input("Qual o resistor para conta\n").strip())
-            t1 = Resistor * c1
-            t2 = Resistor * c2
-            t3 = Resistor * c3
-            tf12 = Resistor * front12
-            tf13 = Resistor * front13
-            tf23 = Resistor * front23
+            Tensão(Resistor)
             escolha = input ("Você quer saber de qual camada??\n").strip().lower()
             
             if escolha == "I1":
@@ -93,12 +91,7 @@ while True:
                 break
     elif conta == "corrente":
             Resistor = int(input("Qual o resistor para conta\n").strip())
-            t1 = Resistor * c1
-            t2 = Resistor * c2
-            t3 = Resistor * c3
-            tf12 = Resistor * front12
-            tf13 = Resistor * front13
-            tf23 = Resistor * front23
+            Tensão(Resistor)
             escolha = input ("Você quer saber de qual camada??\n").strip().lower()
             
             if escolha == "I1":
@@ -121,5 +114,7 @@ while True:
                 
                 elif fronteira == "fronteira23":
                     print (f"Corrente = {front23:.3f} W")
+    else:
+        break
     else:
         break

@@ -16,35 +16,41 @@ def tabela ():
     print ("🔔🔔🔔 = R$ 200")
     print ("🍏🍏🍏 = R$ 500")
     print ("🎲🎲🎲 = R$ 100")
-    print ("🏅🏅🏅 = R$127")
+    print ("🏅🏅🏅 = R$ 127")
     print ("-" * 70)
 def sorte(cx_1,cx_2,cx_3):
     global dindin
     if cx_1 == "7" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 700
+        time.sleep(1)
     elif cx_1 == "🍒" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 300
+        time.sleep(1)
     elif cx_1 == "🔔" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 200
+        time.sleep(1)
     elif cx_1 == "🍏" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 500
+        time.sleep(1)
     elif cx_1 == "🎲" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 100
+        time.sleep(1)
     elif cx_1 == "🏅" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 127
+        time.sleep(1)
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 hub()
 tabela()
 try:
-    giro = input("Você quer jogar?(s/n)").strip().lower()
+    giro = input("Você quer jogar?(s/n)\n").strip().lower()
 
 except NameError:
     print ("Coloque algo válido")
@@ -60,10 +66,12 @@ if giro == "s":
         
         if dindin == 0 or dindin < 1:
             print ("🩻🩻🩻Você chegou a falência🩻🩻🩻")
+            time.sleep(2)
             break
         
         elif dindin >= 1000:
             print ("🎉🎉🎉Você pagou suas dividas🎉🎉🎉")
+            time.sleep(2)
             break
         
         if roletar == "":
@@ -75,7 +83,7 @@ if giro == "s":
             sorte(cx_1,cx_2,cx_3)
             print ("-" * 10)
             dindin -= 1
-            time.sleep(0.5)
+            time.sleep(0.25)
 elif giro == "n":
     print ("Volte quando estiver pronto")
 else:

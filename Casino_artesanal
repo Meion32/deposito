@@ -1,5 +1,5 @@
+import os
 import time
-import sys
 import random
 hakari = "7","🍒","🔔","🍏","🎲","🏅"
 dindin = 25
@@ -15,8 +15,8 @@ def tabela ():
     print ("🍒🍒🍒 = R$ 300")
     print ("🔔🔔🔔 = R$ 200")
     print ("🍏🍏🍏 = R$ 500")
-    print ("🍹🍹🍹 = R$ 100")
-    print ("🎭🎭🎭 = R$127")
+    print ("🎲🎲🎲 = R$ 100")
+    print ("🏅🏅🏅 = R$127")
     print ("-" * 70)
 def sorte(cx_1,cx_2,cx_3):
     global dindin
@@ -38,44 +38,45 @@ def sorte(cx_1,cx_2,cx_3):
     elif cx_1 == "🏅" and cx_2 == cx_1 and cx_3 == cx_1:
         print ("JackPot")
         dindin += 127
-def apagar_linhas(quantidade):
-    for _ in range(quantidade):
-        sys.stdout.write('\033[F\033[K')
-    sys.stdout.flush()
-primeira_rodada = True
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 hub()
 tabela()
+try:
+    giro = input("Você quer jogar?(s/n)").strip().lower()
 
-while True:
-    if not primeira_rodada:
-        apagar_linhas(8)
-    
-    cx_1 = random.choice(hakari)
-    cx_2 = random.choice(hakari)
-    cx_3 = random.choice(hakari)
-    
-    if dindin == 0 or dindin < 1:
-        print ("🩻🩻🩻Você chegou a falência🩻🩻🩻")
-        break
-    elif dindin >= 1000:
-        print ("🎉🎉🎉Você pagou suas dividas🎉🎉🎉")
-    print (f"Seu saldo atual é {dindin}")
-    try:
-        giro = input("Você quer jogar?(s/n)").strip().lower()
-        primeira_rodada = False
-    except NameError:
-        print ("Coloque algo válido")
-        continue
+except NameError:
+    print ("Coloque algo válido")
 
-    if giro == "s":
-        print ("-" * 10)
-        print (cx_1, cx_2,cx_3)
-        sorte(cx_1,cx_2,cx_3)
-        print ("-" * 10)
-        dindin -= 1
-    elif giro == "n":
-        print ("Inicie quando quiser")
-    else:
-        print ("Coloque apenas 's' ou 'n'")
-        print ("")
-        print ("")
+if giro == "s":
+    while True:    
+        
+        cx_1 = random.choice(hakari)
+        cx_2 = random.choice(hakari)
+        cx_3 = random.choice(hakari)
+        
+        roletar = input (f"Clique 'ENTER' para girar \n Saldo: {dindin}").strip()
+        
+        if dindin == 0 or dindin < 1:
+            print ("🩻🩻🩻Você chegou a falência🩻🩻🩻")
+            break
+        
+        elif dindin >= 1000:
+            print ("🎉🎉🎉Você pagou suas dividas🎉🎉🎉")
+            break
+        
+        if roletar == "":
+            limpar_tela()
+            hub()
+            tabela()
+            print ("-" * 10)
+            print (cx_1, cx_2,cx_3)
+            sorte(cx_1,cx_2,cx_3)
+            print ("-" * 10)
+            dindin -= 1
+            time.sleep(0.5)
+elif giro == "n":
+    print ("Volte quando estiver pronto")
+else:
+    print ("coloque apenas 's' ou 'n'")

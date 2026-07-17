@@ -1,1 +1,1 @@
-# deposito
+Meus projetos bizarros ai. Não tem muito o que dizer sobre, se quiser usar minhas criações, vá em frente
